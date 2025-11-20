@@ -20,6 +20,6 @@ public class HomeControllerTest {
     @Test
     public void shouldReturnHelloWorld() {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class))
-                .contains("Hello World from Microservice 1! - UAT");
+                .contains("Hello World from Microservice 1! - PROD");
     }
 }
