@@ -1,0 +1,44 @@
+replicaCount: 2
+
+image:
+  repository: your-registry/myapp
+  tag: "v1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
+
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "prod"
+  - name: JAVA_OPTS
+    value: "-Xms256m -Xmx512m"
+
+livenessProbe:
+  path: /actuator/health/liveness
+  port: 8080
+
+readinessProbe:
+  path: /actuator/health/readiness
+  port: 8080
+
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 5
+  cpuTargetPercentage: 70
+
+ingress:
+  enabled: false
+  className: "nginx"
+  host: "myapp.example.com"
