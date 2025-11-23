@@ -39,13 +39,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- SonarQube Maven Plugin for static code analysis-->
-        <dependency>
-            <groupId>org.sonarsource.scanner.maven</groupId>
-            <artifactId>sonar-maven-plugin</artifactId>
-            <version>5.3.0.6276</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -110,6 +103,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- For SonarQube analysis -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.0.2155</version>
             </plugin>
         </plugins>
     </build>
