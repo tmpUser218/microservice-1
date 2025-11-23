@@ -79,7 +79,7 @@ pipeline {
             steps {
                 withSonarQubeEnv(installationName: 'sq1') {
                     // sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' // For Linux agent.
-                    bat 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+                    bat 'mvn clean verify sonar:sonar'
                 }
             }
         }
