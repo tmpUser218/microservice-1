@@ -5,15 +5,15 @@ pipeline {
         maven 'Maven-3.9.5'  // Match the name from Global Tool Configuration
     }
 
-    environment {
-        // Define environment variables that will be used across stages
-        DOCKER_REGISTRY_URL = credentials('docker-registry-url') // Stored in Jenkins credentials
-        DOCKER_IMAGE_TAG = "${env.BUILD_ID}"
-        DOCKER_CRED_ID = 'docker-credentials' // Jenkins credentials ID for Docker registry
-        BRANCH_NAME = "jenkins-update-${env.BUILD_ID}"
-        NEW_TAG = "${env.BUILD_ID}"
-        APP_NAME = "microservice1"
-    }
+    // environment {
+    //     // Define environment variables that will be used across stages
+    //     DOCKER_REGISTRY_URL = credentials('docker-registry-url') // Stored in Jenkins credentials
+    //     DOCKER_IMAGE_TAG = "${env.BUILD_ID}"
+    //     DOCKER_CRED_ID = 'docker-credentials' // Jenkins credentials ID for Docker registry
+    //     BRANCH_NAME = "jenkins-update-${env.BUILD_ID}"
+    //     NEW_TAG = "${env.BUILD_ID}"
+    //     APP_NAME = "microservice1"
+    // }
 
     stages {
         // Apply formatting before linting to avoid any errors.
